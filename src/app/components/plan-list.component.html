@@ -1,0 +1,16 @@
+<div *ngFor="let plan of plan$ | async" class="row" style="margin-left: 300px; margin-top: 100px;">
+    <div class="col-sm-3">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+              <input type="date" value="{{plan.datePlannedFor}}" formControlName="datePlannedFor" class="card-title">
+              <input type="number" value="{{plan.id}}" formControlName="id" class="card-subtitle mb-2 text-muted" style="visibility: hidden;">
+              <input type="text" value="{{plan.planDescription}}" formControlName="planDescription" style="width: 250px; height: 100px;">
+              <button *ngIf="isVisible" type="submit" class="btn btn-lg btn-outline-primary">Save</button>
+            </form>
+              <button *ngIf="!isVisible" class="btn btn-lg btn-outline-primary" (click)="edit()">Edit</button>
+              <button *ngIf="!isVisible" class="btn btn-lg btn-outline-primary" (click)="delete()">Delete</button>
+            </div>
+          </div>
+    </div>
+  </div>
